@@ -309,11 +309,11 @@ class cloud_project_one:
                 
                 # Process and delete each message
                 for message in messages:
-                    message_id = message.get('MessageId', 'No ID')
                     message_body = message.get('Body', 'No Body')
+                    message_name = message.get('MessageAttributes', {}).get('AttributeName', {}).get('StringValue', 'No Name')
                     receipt_handle = message.get('ReceiptHandle')
                     
-                    print(f'Message ID: {message_id}')
+                    print(f'Message Name: {message_name}')
                     print(f'Message Body: {message_body}')
                     
                     # Delete the message from the queue after processing
